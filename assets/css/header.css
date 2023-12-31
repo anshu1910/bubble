@@ -1,0 +1,66 @@
+nav {
+  background-color: #007FFF;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+nav ul li {
+  margin: 0 10px;
+  /* Change button background color on hover */
+}
+
+nav ul li .right-align {
+  margin-left: auto;
+}
+
+nav ul li a {
+  text-decoration: none;
+  font-size: medium;
+  font-weight: bold;
+  color: black;
+  transition: color 0.1s ease;
+  padding: 5px;
+}
+
+nav ul li a:hover {
+  color: white;
+}
+
+nav ul li .right-align {
+  margin-left: auto;
+  /* Add margin-left: auto to push items to the right */
+}
+
+nav ul li button {
+  padding: 10px 20px;
+  /* Add padding to the button */
+  font-size: 16px;
+  /* Set the font size */
+  border: none;
+  /* Remove the default border */
+  background-color: #007bff;
+  /* Set the background color */
+  color: #fff;
+  /* Set the text color */
+  cursor: pointer;
+  /* Change cursor to pointer on hover */
+  border-radius: 5px;
+  /* Add rounded corners */
+  transition: background-color 0.3s ease;
+  /* Add a smooth transition for the background color */
+}
+
+nav ul li button:hover {
+  background-color: #0056b3;
+  /* Darker shade of the background color */
+}
