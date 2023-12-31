@@ -7,12 +7,18 @@ module.exports.profile = function(req, res){
 }
 
 module.exports.signUp = function(req, res){
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile');
+    }
     return res.render('user-sign-up', {
         title: "Bubble | Sign Up"
     });
 }
 
 module.exports.signIn = function(req, res){
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile');
+    }
     return res.render('user-sign-in', {
         title: "Bubble | Sign In"
     });
@@ -40,5 +46,17 @@ module.exports.create = async function(req, res){
 }
 
 module.exports.createSession = function(req, res){
-    // To be implemented later
+    return res.redirect('/');
+}
+
+module.exports.destroySession = function (req, res) {
+    req.logout(function(err) {
+        if (err) {
+            // Handle error
+            console.error(err);
+            return res.status(500).send('Internal Server Error');
+        }
+        // Successful logout
+        return res.redirect('/');
+    });
 }
