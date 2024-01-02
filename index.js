@@ -29,6 +29,7 @@ app.set('layout extractScripts', true);
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
+
 app.use(session({
 name : 'bubble',
 //TODO change the secret before deployment in production mode
