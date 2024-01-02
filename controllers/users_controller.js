@@ -18,11 +18,12 @@ module.exports.update = function(req, res){
     if (req.user.id === req.params.id) {
         User.findByIdAndUpdate(req.params.id, req.body)
             .then(user => {
+                req.flash('success', 'Information updated Successfully');
                 return res.redirect('back');
             })
             .catch(err => {
-                console.error('Error updating user:', err);
-                return res.status(500).send('Internal Server Error');
+                req.flash('error', err)
+                return res.redirect('back');
             });
     } else {
         return res.status(401).send('Unauthorized');
@@ -70,6 +71,7 @@ module.exports.create = async function(req, res){
 }
 
 module.exports.createSession = function(req, res){
+    req.flash('success', 'Logged in successfully');
     return res.redirect('/');
 }
 
@@ -81,6 +83,7 @@ module.exports.destroySession = function (req, res) {
             return res.status(500).send('Internal Server Error');
         }
         // Successful logout
+        req.flash('success', 'You have Logged Out');
         return res.redirect('/');
     });
 }

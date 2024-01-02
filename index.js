@@ -8,8 +8,10 @@ const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
 const MongoStore = require('connect-mongo');
 const sassMiddleware = require('node-sass-middleware');
-
+const flash = require('connect-flash');
 const cookieParser = require('cookie-parser');
+const customMware = require('./config/middleware');
+
 app.use(sassMiddleware({
     src: './assets/scss',
     dest: './assets/css',
@@ -17,7 +19,6 @@ app.use(sassMiddleware({
     outputStyle: 'expanded',
     prefix: '/css'
 }));
-
 
 app.use(express.urlencoded({ extended: false}));
 app.use(cookieParser());
@@ -28,7 +29,6 @@ app.set('layout extractScripts', true);
 
 app.set('view engine', 'ejs');
 app.set('views', './views');
-
 
 app.use(session({
 name : 'bubble',
@@ -51,6 +51,8 @@ store: MongoStore.create(
 app.use(passport.initialize());
 app.use(passport.session());
 app.use (passport.setAuthenticatedUser);
+app.use(flash());
+app.use(customMware.setFlash);
 
 app.use('/', require('./routes'));
 
