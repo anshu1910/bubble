@@ -46,7 +46,6 @@ module.exports.update = async function(req, res){
     }
 }
 
-
 module.exports.signUp = function(req, res){
     if(req.isAuthenticated()){
         return res.redirect('/users/profile');
