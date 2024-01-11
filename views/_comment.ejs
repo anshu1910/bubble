@@ -1,4 +1,4 @@
-<li>
+<li id ="comment=<%= comment._id %>">
     <p>
         <% if(locals.user && locals.user.id == comment.user.id){ %>
             <small>
@@ -9,6 +9,16 @@
         <br>
         <small>
           <%= comment.user.name %>
+        </small>
+        <small>
+            <% if(locals.user){%>
+                <a class="toggle-like-button" data-likes="<%= comment.likes.length %>" href="/likes/toggle/?id=<%= comment._id%>&type=comment">
+                    <%= comment.likes.length %> Likes
+
+                </a>
+                <%}else {%>
+                    <%= comment.likes.length %> Likes
+                <% } %>
         </small>
     </p>
 </li> 
