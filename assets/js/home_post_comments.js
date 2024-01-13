@@ -20,7 +20,6 @@ class PostComments{
         });
     }
 
-
     createComment(postId){
         let pSelf = this;
         this.newCommentForm.submit(function(e){

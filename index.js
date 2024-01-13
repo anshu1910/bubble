@@ -13,6 +13,11 @@ const sassMiddleware = require('node-sass-middleware');
 const flash = require('connect-flash');
 const cookieParser = require('cookie-parser');
 const customMware = require('./config/middleware');
+//setting up chat server
+const chatServer = require('http').Server(app);
+const chatSockets = require('./config/chat_sockets').chatSockets(chatServer);
+chatServer.listen(5000);
+console.log('chat server is listening on port 5000');
 
 app.use(sassMiddleware({
     src: './assets/scss',
